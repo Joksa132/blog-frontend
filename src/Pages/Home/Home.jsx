@@ -1,12 +1,11 @@
 import { Box, Button, Container, CssBaseline, Typography } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import LightModeIcon from '@mui/icons-material/LightMode';
 import '@fontsource/roboto/500.css';
 
 import { useState } from 'react';
 import Login from '../../Components/Login/Login';
 import Register from '../../Components/Register/Register';
+import Nav from '../../Components/Nav/Nav';
 
 const darkTheme = createTheme({
   palette: {
@@ -21,10 +20,10 @@ const lightTheme = createTheme({
 });
 
 function Home() {
-  const [isDarkMode, setIsDarkMode] = useState(true)
-  const theme = isDarkMode ? darkTheme : lightTheme
   const [showLoginModal, setShowLoginModal] = useState(false)
   const [showRegisterModal, setShowRegisterModal] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(true)
+  const theme = isDarkMode ? darkTheme : lightTheme
 
   const handleLoginClick = () => {
     setShowLoginModal(true);
@@ -44,37 +43,9 @@ function Home() {
 
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Container maxWidth="md" sx={{ display: "flex", flexDirection: "column" }}>
-          <Box sx={{ display: "flex", justifyContent: "space-around", alignItems: "center", marginTop: "50px" }}>
-            <Typography
-              variant='h5'
-              sx={{
-                letterSpacing: 4,
-              }}
-              fontWeight="bold"
-              color='secondary'
-            >
-              BLOG
-            </Typography>
-            <Box>
-              <Button size='large' color='secondary' onClick={handleLoginClick}>LOGIN</Button>
-              <Button size='large' color='secondary' onClick={handleRegisterClick}>REGISTER</Button>
-            </Box>
-            <Button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              startIcon={isDarkMode ? <DarkModeIcon /> : <LightModeIcon />}
-              color='secondary'
-              size='large'
-            >
-              {isDarkMode ? "Dark" : "Light"}
-            </Button>
-          </Box>
-          <Login open={showLoginModal} onClose={handleLoginModalClose} />
-          <Register open={showRegisterModal} onClose={handleRegisterModalClose} />
-        </Container>
-      </ThemeProvider>
+      <Nav handleLoginClick={handleLoginClick} handleRegisterClick={handleRegisterClick} theme={theme} isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <Login open={showLoginModal} onClose={handleLoginModalClose} theme={theme} />
+      <Register open={showRegisterModal} onClose={handleRegisterModalClose} theme={theme} />
     </>
 
   )
