@@ -38,11 +38,11 @@ function Register({ open, onClose, theme }) {
       password
     }
     axios.post(`http://localhost:4000/user/register`, newUser)
-      .then((res) => { () => onClose() })
+      .then((res) => onClose())
       .catch((err) => {
         console.log(err)
         setError(err.response.data.message)
-      });
+      })
 
   }
 
@@ -80,6 +80,7 @@ function Register({ open, onClose, theme }) {
               id="firstName"
               margin="dense"
               onChange={onFirstNameChange}
+              color="secondary"
             />
             <TextField
               required
@@ -89,6 +90,7 @@ function Register({ open, onClose, theme }) {
               id="lastName"
               margin="dense"
               onChange={onLastNameChange}
+              color="secondary"
             />
             <TextField
               required
@@ -98,6 +100,7 @@ function Register({ open, onClose, theme }) {
               id="username"
               margin="dense"
               onChange={onUsernameChange}
+              color="secondary"
             />
             {error && (
               <Typography variant="body2" color="error">
@@ -113,6 +116,7 @@ function Register({ open, onClose, theme }) {
               type="password"
               margin="dense"
               onChange={onPasswordChange}
+              color="secondary"
             />
             <Box display="flex" flexDirection="column" alignItems="center">
               <Button

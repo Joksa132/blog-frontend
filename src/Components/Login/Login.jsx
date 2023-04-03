@@ -78,6 +78,7 @@ function Login({ open, onClose, theme }) {
               id="username"
               margin="dense"
               onChange={onUsernameChange}
+              color="secondary"
             />
             {error && (
               <Typography variant="body2" color="error">
@@ -93,6 +94,7 @@ function Login({ open, onClose, theme }) {
               type="password"
               margin="dense"
               onChange={onPasswordChange}
+              color="secondary"
             />
             <Box display="flex" flexDirection="column" alignItems="center">
               <Button
