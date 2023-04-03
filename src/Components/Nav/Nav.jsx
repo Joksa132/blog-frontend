@@ -5,6 +5,7 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import '@fontsource/roboto/500.css';
 
 import { useContext } from 'react';
+import { Link } from 'react-router-dom'
 import { UserContext } from '../../Context/UserContext';
 
 function Nav({ handleLoginClick, handleRegisterClick, theme, isDarkMode, setIsDarkMode }) {
@@ -20,22 +21,25 @@ function Nav({ handleLoginClick, handleRegisterClick, theme, isDarkMode, setIsDa
       <CssBaseline />
       <Container maxWidth="md" sx={{ display: "flex", flexDirection: "column" }}>
         <Box sx={{ display: "flex", justifyContent: "space-around", alignItems: "center", marginTop: "50px" }}>
-          <Typography
-            variant='h5'
-            sx={{
-              letterSpacing: 4,
-            }}
-            fontWeight="bold"
-            color='secondary'
-          >
-            BLOG
-          </Typography>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Typography
+              variant='h5'
+              sx={{
+                letterSpacing: 4,
+              }}
+              fontWeight="bold"
+              color='secondary'
+            >
+              BLOG
+            </Typography>
+          </Link>
           <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "5px" }}>
             {user ?
               <>
                 <Typography fontSize="large" color='secondary'>
                   Welcome, <span style={{ color: "#b90ac2" }}>{user.username}</span>
                 </Typography>
+                <Button size='large' color='secondary' href='/new'>New article</Button>
                 <Button size='large' color='secondary' onClick={logoutUser}>Logout</Button>
               </>
               :
