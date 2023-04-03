@@ -1,5 +1,6 @@
 import { Typography, Box, Button } from "@mui/material"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import EditIcon from '@mui/icons-material/Edit';
 
 import { useContext } from "react"
 import { Link } from "react-router-dom"
@@ -21,7 +22,10 @@ function Article({ article, handleDelete }) {
         </Box>
 
         {user?.userId === article.createdBy._id &&
-          <Button variant="text" color="secondary" size="small" startIcon={<DeleteForeverIcon />} onClick={handleDelete}>Delete</Button>
+          <>
+            <Button variant="text" color="secondary" size="small" startIcon={<DeleteForeverIcon />} onClick={handleDelete}>Delete</Button>
+            <Button variant="text" color="secondary" size="small" startIcon={<EditIcon />} href={"/edit/" + article._id}>Edit</Button>
+          </>
         }
       </Box>
     </Box >
