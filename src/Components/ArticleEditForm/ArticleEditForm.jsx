@@ -36,7 +36,7 @@ function ArticleEditForm() {
   const { id } = useParams()
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/article/${id}`)
+    axios.get(`${import.meta.env.VITE_BackendURL}/article/${id}`)
       .then((res) => {
         setTitle(res.data.title)
         const delta = JSON.parse(res.data.content);
@@ -66,7 +66,7 @@ function ArticleEditForm() {
       content: contentJson
     }
 
-    axios.put(`http://localhost:4000/article/edit/${id}`, editedArticle, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
+    axios.put(`${import.meta.env.VITE_BackendURL}/article/edit/${id}`, editedArticle, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
       .then((res) => {
         navigate("/")
       })

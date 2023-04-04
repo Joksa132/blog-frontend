@@ -28,8 +28,10 @@ function Home() {
   const theme = isDarkMode ? darkTheme : lightTheme
   const [articles, setArticles] = useState([])
 
+  console.log(import.meta.env.VITE_BackendURL)
+
   useEffect(() => {
-    axios.get(`http://localhost:4000/article/all`)
+    axios.get(`${import.meta.env.VITE_BackendURL}/article/all`)
       .then((res) => setArticles(res.data))
       .catch((err) => console.log(err))
   }, [])
@@ -53,7 +55,7 @@ function Home() {
   const handleDelete = (id) => {
     const confirmation = window.confirm("Are you sure you want to delete this post?")
     confirmation &&
-      axios.delete(`http://localhost:4000/article/delete/${id}`, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
+      axios.delete(`${import.meta.env.VITE_BackendURL}/article/delete/${id}`, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
         .then((res) => {
           setArticles(articles.filter((article) => article._id !== res.data._id))
         })

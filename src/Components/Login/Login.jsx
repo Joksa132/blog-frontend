@@ -27,7 +27,7 @@ function Login({ open, onClose, theme }) {
       username,
       password
     }
-    axios.post(`http://localhost:4000/user/login`, user)
+    axios.post(`${import.meta.env.VITE_BackendURL}/user/login`, user)
       .then((res) => {
         console.log(res.data)
         setUser({

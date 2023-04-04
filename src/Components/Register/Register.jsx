@@ -37,7 +37,7 @@ function Register({ open, onClose, theme }) {
       username,
       password
     }
-    axios.post(`http://localhost:4000/user/register`, newUser)
+    axios.post(`${import.meta.env.VITE_BackendURL}/user/register`, newUser)
       .then((res) => onClose())
       .catch((err) => {
         console.log(err)

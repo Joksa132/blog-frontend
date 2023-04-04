@@ -46,7 +46,7 @@ function ArticleForm() {
       content: contentJson
     }
 
-    axios.post(`http://localhost:4000/article/new`, newArticle, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
+    axios.post(`${import.meta.env.VITE_BackendURL}/article/new`, newArticle, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
       .then((res) => {
         setValue('')
         setTitle('')

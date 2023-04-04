@@ -32,7 +32,7 @@ function ArticlePage() {
   const [showRegisterModal, setShowRegisterModal] = useState(false)
 
   useEffect(() => {
-    axios.get(`http://localhost:4000/article/${id}`)
+    axios.get(`${import.meta.env.VITE_BackendURL}/article/${id}`)
       .then((res) => {
         setArticle(res.data)
         console.log(JSON.parse(res.data.content))
