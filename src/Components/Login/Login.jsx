@@ -96,6 +96,7 @@ function Login({ open, onClose, theme }) {
               onChange={onPasswordChange}
               color="secondary"
             />
+            <Typography variant="body2" color="secondary" >If you don't want to register - username: marko | password: marko</Typography>
             <Box display="flex" flexDirection="column" alignItems="center">
               <Button
                 type="submit"
