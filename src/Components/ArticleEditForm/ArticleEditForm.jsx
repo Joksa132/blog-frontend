@@ -25,7 +25,7 @@ const lightTheme = createTheme({
   },
 });
 
-function ArticleEditForm({ article }) {
+function ArticleEditForm() {
   const [isDarkMode, setIsDarkMode] = useState(true)
   const theme = isDarkMode ? darkTheme : lightTheme
   const { user } = useContext(UserContext)
