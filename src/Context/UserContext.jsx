@@ -7,7 +7,7 @@ export const UserProvider = (props) => {
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_BackendURL}/user/info`, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
+    axios.get(`/user/info`, { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } })
       .then(res => {
         setUser(
           {

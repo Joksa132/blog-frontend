@@ -1,12 +1,11 @@
 import { Modal, Typography, Box, TextField, Button, IconButton, CssBaseline } from "@mui/material"
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import CloseIcon from '@mui/icons-material/Close';
-import { ThemeProvider } from '@mui/material/styles';
 
 import { useState } from "react"
 import axios from "axios";
 
-function Register({ open, onClose, theme }) {
+function Register({ open, onClose }) {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [username, setUsername] = useState('')
@@ -37,7 +36,7 @@ function Register({ open, onClose, theme }) {
       username,
       password
     }
-    axios.post(`${import.meta.env.VITE_BackendURL}/user/register`, newUser)
+    axios.post(`/user/register`, newUser)
       .then((res) => onClose())
       .catch((err) => {
         console.log(err)
@@ -47,94 +46,92 @@ function Register({ open, onClose, theme }) {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <Modal open={open} onClose={onClose}>
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: 400,
-            bgcolor: "background.paper",
-            border: "2px solid #000",
-            boxShadow: 24,
-            p: 2,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "5px"
-          }}
-        >
-          <IconButton color="secondary" onClick={onClose}>
-            <CloseIcon />
-          </IconButton>
+    <Modal open={open} onClose={onClose}>
+      <Box
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: 400,
+          bgcolor: "background.paper",
+          border: "2px solid #000",
+          boxShadow: 24,
+          p: 2,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "5px"
+        }}
+      >
+        <IconButton color="secondary" onClick={onClose}>
+          <CloseIcon />
+        </IconButton>
 
-          <Typography color="secondary" variant="h4" fontWeight="bold">Register</Typography>
-          <Box component="form" onSubmit={onSubmit}>
-            <TextField
-              required
-              fullWidth
-              label="First Name"
-              name="firstName"
-              id="firstName"
-              margin="dense"
-              onChange={onFirstNameChange}
+        <Typography color="secondary" variant="h4" fontWeight="bold">Register</Typography>
+        <Box component="form" onSubmit={onSubmit}>
+          <TextField
+            required
+            fullWidth
+            label="First Name"
+            name="firstName"
+            id="firstName"
+            margin="dense"
+            onChange={onFirstNameChange}
+            color="secondary"
+          />
+          <TextField
+            required
+            fullWidth
+            label="Last Name"
+            name="lastName"
+            id="lastName"
+            margin="dense"
+            onChange={onLastNameChange}
+            color="secondary"
+          />
+          <TextField
+            required
+            fullWidth
+            label="Username"
+            name="username"
+            id="username"
+            margin="dense"
+            onChange={onUsernameChange}
+            color="secondary"
+          />
+          {error && (
+            <Typography variant="body2" color="error">
+              {error}
+            </Typography>
+          )}
+          <TextField
+            required
+            fullWidth
+            label="Password"
+            name="password"
+            id="password"
+            type="password"
+            margin="dense"
+            onChange={onPasswordChange}
+            color="secondary"
+          />
+          <Box display="flex" flexDirection="column" alignItems="center">
+            <Button
+              type="submit"
+              variant="contained"
               color="secondary"
-            />
-            <TextField
-              required
-              fullWidth
-              label="Last Name"
-              name="lastName"
-              id="lastName"
-              margin="dense"
-              onChange={onLastNameChange}
-              color="secondary"
-            />
-            <TextField
-              required
-              fullWidth
-              label="Username"
-              name="username"
-              id="username"
-              margin="dense"
-              onChange={onUsernameChange}
-              color="secondary"
-            />
-            {error && (
-              <Typography variant="body2" color="error">
-                {error}
-              </Typography>
-            )}
-            <TextField
-              required
-              fullWidth
-              label="Password"
-              name="password"
-              id="password"
-              type="password"
-              margin="dense"
-              onChange={onPasswordChange}
-              color="secondary"
-            />
-            <Box display="flex" flexDirection="column" alignItems="center">
-              <Button
-                type="submit"
-                variant="contained"
-                color="secondary"
-                startIcon={<ArrowForwardIosIcon />}
-                size="medium"
-                sx={{ mt: 2 }}
-              >
-                Submit
-              </Button>
-            </Box>
-
+              startIcon={<ArrowForwardIosIcon />}
+              size="medium"
+              sx={{ mt: 2 }}
+            >
+              Submit
+            </Button>
           </Box>
+
         </Box>
-      </Modal>
-    </ThemeProvider>
+      </Box>
+    </Modal>
 
   )
 }
