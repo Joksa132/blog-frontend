@@ -12,7 +12,7 @@ function Article({ article, handleDelete }) {
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
       <Link to={"/article/" + article._id} style={{ textDecoration: "none" }}>
-        <Typography variant="h3" color="#CE93D8">{article.title}</Typography>
+        <Typography variant="h3" color="#b90ac2">{article.title}</Typography>
       </Link>
       <Box sx={{ display: "flex", gap: "5px", alignItems: "center" }}>
         <Box sx={{ display: "flex", gap: "5px", alignItems: "center" }}>
@@ -24,7 +24,9 @@ function Article({ article, handleDelete }) {
         {user?.userId === article.createdBy._id &&
           <>
             <Button variant="text" color="secondary" size="small" startIcon={<DeleteForeverIcon />} onClick={handleDelete}>Delete</Button>
-            <Button variant="text" color="secondary" size="small" startIcon={<EditIcon />} href={"/edit/" + article._id}>Edit</Button>
+            <Link to={"/edit/" + article._id} style={{ textDecoration: "none" }}>
+              <Button variant="text" color="secondary" size="small" startIcon={<EditIcon />}>Edit</Button>
+            </Link>
           </>
         }
       </Box>
