@@ -16,50 +16,48 @@ function Nav({ handleLoginClick, handleRegisterClick, isDarkMode, setIsDarkMode 
   }
 
   return (
-    <Container sx={{ display: "flex", flexDirection: "column" }}>
-      <Box sx={{ display: "flex", justifyContent: "space-around", alignItems: "center", marginTop: "50px", flexDirection: { xs: "column", md: "row" }, }}>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <Typography
-            variant='h5'
-            sx={{
-              letterSpacing: 4,
-            }}
-            fontWeight="bold"
-            color='#CE93D8'
-          >
-            BLOG
-          </Typography>
-        </Link>
-        <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "5px" }}>
-          {user ?
-            <>
-              <Typography fontSize="large" color='#CE93D8'>
-                Welcome, <span style={{ color: "#b90ac2" }}>{user.username}</span>
-              </Typography>
-              <Link to="/new" style={{ textDecoration: "none" }}>
-                <Button size='large' style={{ color: "#CE93D8" }}>New article</Button>
-              </Link>
-              <Button size='large' style={{ color: "#CE93D8" }} onClick={logoutUser}>Logout</Button>
-            </>
-            :
-            <>
-              < Button size='large' style={{ color: "#CE93D8" }} onClick={handleLoginClick}>LOGIN</Button>
-              <Button size='large' style={{ color: "#CE93D8" }} onClick={handleRegisterClick}>REGISTER</Button>
-            </>
-          }
-
-        </Box>
-        <Button
-          onClick={() => setIsDarkMode(!isDarkMode)}
-          startIcon={isDarkMode ? <DarkModeIcon /> : <LightModeIcon />}
-          style={{ color: "#CE93D8" }}
-          size='large'
+    <Container sx={{ display: "flex", alignItems: "center", justifyContent: "space-around", paddingTop: "40px" }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <Typography
+          variant='h4'
+          sx={{
+            letterSpacing: 2,
+          }}
+          fontWeight="bold"
+          color={isDarkMode ? '#FFFFFF' : '#222222'}
         >
-          {isDarkMode ? "Dark" : "Light"}
-        </Button>
-      </Box>
-    </Container>
+          BLOG
+        </Typography>
+      </Link>
+      <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "30px" }}>
+        {user ?
+          <>
+            <Typography fontSize="large" sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "5px" }}>
+              Welcome,
+              <Typography fontSize="large" color={isDarkMode ? '#FFA7C4' : '#D23669'}>{user.username}</Typography>
+            </Typography>
+            <Typography fontSize='large'>
+              <Link to="/new" style={{ textDecoration: "none", color: isDarkMode ? "#FFFFFF" : "#222222" }}>New Article</Link>
+            </Typography>
+            <Typography fontSize='large' sx={{ cursor: "pointer" }} onClick={logoutUser}>Logout</Typography>
+          </>
+          :
+          <>
+            <Typography fontSize='large' onClick={handleLoginClick} sx={{ cursor: "pointer" }}>Login</Typography>
+            <Typography fontSize='large' onClick={handleRegisterClick} sx={{ cursor: "pointer" }}>Register</Typography>
+          </>
+        }
 
+      </Box>
+      <Button
+        onClick={() => setIsDarkMode(!isDarkMode)}
+        startIcon={isDarkMode ? <DarkModeIcon /> : <LightModeIcon />}
+        style={{ color: isDarkMode ? "#FFFFFF" : "#222222" }}
+        size='large'
+      >
+        {isDarkMode ? "Dark" : "Light"}
+      </Button>
+    </Container >
   )
 }
 
