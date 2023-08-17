@@ -16,7 +16,7 @@ function Nav({ handleLoginClick, handleRegisterClick, isDarkMode, setIsDarkMode 
   }
 
   return (
-    <Container sx={{ display: "flex", alignItems: "center", justifyContent: "space-around", paddingTop: "40px" }}>
+    <Container maxWidth="md" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: "40px", }}>
       <Link to="/" style={{ textDecoration: "none" }}>
         <Typography
           variant='h4'
