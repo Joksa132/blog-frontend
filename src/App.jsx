@@ -14,12 +14,27 @@ import Register from './Components/Register/Register';
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
+    primary: {
+      main: '#FFA7C4',
+    },
+    secondary: {
+      main: '#E5E5E6'
+    },
+    background: {
+      default: '#282C35'
+    }
   },
 });
 
 const lightTheme = createTheme({
   palette: {
     mode: 'light',
+    primary: {
+      main: '#D23669',
+    },
+    secondary: {
+      main: '#222222',
+    },
   },
 });
 
@@ -49,9 +64,9 @@ function App() {
     <>
       <BrowserRouter>
         <Nav isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} handleLoginClick={handleLoginClick} handleRegisterClick={handleRegisterClick} />
-
         <ThemeProvider theme={theme}>
           <CssBaseline />
+
           <Login open={showLoginModal} onClose={handleLoginModalClose} />
           <Register open={showRegisterModal} onClose={handleRegisterModalClose} />
 
