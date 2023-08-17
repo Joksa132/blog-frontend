@@ -16,35 +16,32 @@ function Nav({ handleLoginClick, handleRegisterClick, isDarkMode, setIsDarkMode 
   }
 
   return (
-    <Container maxWidth="md" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: "40px", }}>
+    <Container maxWidth="md" sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: "40px", flexDirection: { sm: "row", xs: "column" }, }}>
       <Link to="/" style={{ textDecoration: "none" }}>
         <Typography
           variant='h4'
-          sx={{
-            letterSpacing: 2,
-          }}
           fontWeight="bold"
           color={isDarkMode ? '#FFFFFF' : '#222222'}
         >
           BLOG
         </Typography>
       </Link>
-      <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "30px" }}>
+      <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: { sm: "30px", xs: "5px", }, flexDirection: { sm: "row", xs: "column" }, }}>
         {user ?
           <>
-            <Typography fontSize="large" sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "5px" }}>
+            <Typography sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "5px" }}>
               Welcome,
-              <Typography fontSize="large" color={isDarkMode ? '#FFA7C4' : '#D23669'}>{user.username}</Typography>
+              <Typography color={isDarkMode ? '#FFA7C4' : '#D23669'}>{user.username}</Typography>
             </Typography>
-            <Typography fontSize='large'>
+            <Typography>
               <Link to="/new" style={{ textDecoration: "none", color: isDarkMode ? "#FFFFFF" : "#222222" }}>New Article</Link>
             </Typography>
-            <Typography fontSize='large' sx={{ cursor: "pointer" }} onClick={logoutUser}>Logout</Typography>
+            <Typography sx={{ cursor: "pointer" }} onClick={logoutUser}>Logout</Typography>
           </>
           :
           <>
-            <Typography fontSize='large' onClick={handleLoginClick} sx={{ cursor: "pointer" }}>Login</Typography>
-            <Typography fontSize='large' onClick={handleRegisterClick} sx={{ cursor: "pointer" }}>Register</Typography>
+            <Typography onClick={handleLoginClick} sx={{ cursor: "pointer" }}>Login</Typography>
+            <Typography onClick={handleRegisterClick} sx={{ cursor: "pointer" }}>Register</Typography>
           </>
         }
 
