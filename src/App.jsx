@@ -22,8 +22,15 @@ const darkTheme = createTheme({
     },
     background: {
       default: '#282C35'
-    }
+    },
   },
+  typography: {
+    fontFamily: [
+      `"Montserrat",
+      "Merriweather",
+      sans-serif`,
+    ]
+  }
 });
 
 const lightTheme = createTheme({
@@ -36,6 +43,13 @@ const lightTheme = createTheme({
       main: '#222222',
     },
   },
+  typography: {
+    fontFamily: [
+      `"Montserrat",
+      "Merriweather",
+      sans-serif`,
+    ]
+  }
 });
 
 function App() {
@@ -63,9 +77,9 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Nav isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} handleLoginClick={handleLoginClick} handleRegisterClick={handleRegisterClick} />
         <ThemeProvider theme={theme}>
           <CssBaseline />
+          <Nav isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} handleLoginClick={handleLoginClick} handleRegisterClick={handleRegisterClick} />
 
           <Login open={showLoginModal} onClose={handleLoginModalClose} />
           <Register open={showRegisterModal} onClose={handleRegisterModalClose} />
