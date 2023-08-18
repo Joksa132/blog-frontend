@@ -9,11 +9,6 @@ import { UserContext } from "../../Context/UserContext"
 function Article({ article, handleDelete }) {
   const { user } = useContext(UserContext)
 
-  function formatDate(dateString) {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('en-GB', options);
-  }
-
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "7px" }}>
       <Link to={"/article/" + article._id} style={{ textDecoration: "none" }}>
@@ -43,7 +38,7 @@ function Article({ article, handleDelete }) {
             color="secondary"
             sx={{ fontSize: "14px", fontFamily: "Merriweather, sans-serif" }}
           >
-            {formatDate(article.createdAt)}
+            {new Date(article.createdAt).toLocaleDateString('en-GB')}
           </Typography>
         </Box>
 
