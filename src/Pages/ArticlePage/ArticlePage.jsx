@@ -29,15 +29,15 @@ function ArticlePage() {
       {!loading ?
         <Container sx={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: "30px" }}>
           <Box sx={{ display: "flex", justifyContent: "center", marginTop: "40px" }}>
-            <Typography variant='h2' color="secondary">{article.title}</Typography>
+            <Typography variant='h2' color="primary" sx={{ fontWeight: "800" }}>{article.title}</Typography>
           </Box>
           <Box sx={{
-            marginTop: "20px", border: "2px solid #ce93d8", padding: "30px", textAlign: "left", overflowWrap: "break-word",
+            marginTop: "20px", padding: "30px", textAlign: "left", overflowWrap: "break-word",
           }} >
-            <Box sx={{ display: "flex", gap: "5px", marginBottom: "10px" }}>
-              <Typography color={"#CE93D8"}>{article?.createdBy?.firstName + " " + article?.createdBy?.lastName}</Typography>
-              <Typography color="#CE93D8">{" ● "}</Typography>
-              <Typography color={"#CE93D8"}>{new Date(article.createdAt).toLocaleDateString('en-GB')}</Typography>
+            <Box sx={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
+              <Typography color='primary' sx={{ fontWeight: "600" }}>{article?.createdBy?.firstName + " " + article?.createdBy?.lastName}</Typography>
+              <Typography color='primary'>{" ● "}</Typography>
+              <Typography color='primary' sx={{ fontWeight: "600" }}>{new Date(article.createdAt).toLocaleDateString('en-GB')}</Typography>
             </Box>
             <Box dangerouslySetInnerHTML={{ __html: contentHtml }}>
 
