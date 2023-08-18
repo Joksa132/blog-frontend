@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import '@fontsource/roboto/500.css';
 
 import { useState, useEffect } from 'react';
@@ -26,16 +26,13 @@ function Home() {
 
   return (
     <>
-      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "100px" }}>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: "30px" }}>
-          {articles.map((article) => {
-            return (
-              <Article key={article._id} article={article} handleDelete={() => handleDelete(article._id)} />
-            )
-          })}
-        </Box>
-
-      </Box>
+      <Container maxWidth="md" sx={{ display: "flex", flexDirection: "column", marginTop: "50px", gap: "30px" }}>
+        {articles.map((article) => {
+          return (
+            <Article key={article._id} article={article} handleDelete={() => handleDelete(article._id)} />
+          )
+        })}
+      </Container>
 
     </>
 
