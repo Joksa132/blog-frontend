@@ -20,28 +20,28 @@ function Nav({ handleLoginClick, handleRegisterClick, isDarkMode, setIsDarkMode 
       <Link to="/" style={{ textDecoration: "none" }}>
         <Typography
           variant='h4'
-          fontWeight="bold"
+          sx={{ fontWeight: "800" }}
           color={isDarkMode ? '#FFFFFF' : '#222222'}
         >
           BLOG
         </Typography>
       </Link>
-      <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: { sm: "30px", xs: "5px", }, flexDirection: { sm: "row", xs: "column" }, }}>
+      <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", gap: { sm: "20px", xs: "5px", }, flexDirection: { sm: "row", xs: "column" }, }}>
         {user ?
           <>
-            <Typography sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "5px" }}>
+            <Typography sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "5px", fontWeight: "700", }}>
               Welcome,
-              <Typography color={isDarkMode ? '#FFA7C4' : '#D23669'}>{user.username}</Typography>
+              <span style={{ color: isDarkMode ? '#FFA7C4' : '#D23669', fontWeight: "800", }}>{user.username}</span>
             </Typography>
             <Typography>
-              <Link to="/new" style={{ textDecoration: "none", color: isDarkMode ? "#FFFFFF" : "#222222" }}>New Article</Link>
+              <Link to="/new" style={{ textDecoration: "none", color: isDarkMode ? "#FFFFFF" : "#222222", fontWeight: "700", }}>New Article</Link>
             </Typography>
-            <Typography sx={{ cursor: "pointer" }} onClick={logoutUser}>Logout</Typography>
+            <Typography sx={{ cursor: "pointer", fontWeight: "700", }} onClick={logoutUser}>Logout</Typography>
           </>
           :
           <>
-            <Typography onClick={handleLoginClick} sx={{ cursor: "pointer" }}>Login</Typography>
-            <Typography onClick={handleRegisterClick} sx={{ cursor: "pointer" }}>Register</Typography>
+            <Typography onClick={handleLoginClick} sx={{ cursor: "pointer", fontWeight: "700", }}>Login</Typography>
+            <Typography onClick={handleRegisterClick} sx={{ cursor: "pointer", fontWeight: "700", }}>Register</Typography>
           </>
         }
 
@@ -49,7 +49,7 @@ function Nav({ handleLoginClick, handleRegisterClick, isDarkMode, setIsDarkMode 
       <Button
         onClick={() => setIsDarkMode(!isDarkMode)}
         startIcon={isDarkMode ? <DarkModeIcon /> : <LightModeIcon />}
-        style={{ color: isDarkMode ? "#FFFFFF" : "#222222" }}
+        style={{ color: isDarkMode ? "#FFFFFF" : "#222222", fontWeight: "700", }}
         size='large'
       >
         {isDarkMode ? "Dark" : "Light"}
