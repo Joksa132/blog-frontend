@@ -27,12 +27,12 @@ function ArticlePage() {
   return (
     <>
       {!loading ?
-        <Container sx={{ display: "flex", flexDirection: "column", alignItems: "center", marginBottom: "30px" }}>
-          <Box sx={{ display: "flex", justifyContent: "center", marginTop: "40px" }}>
+        <Container sx={{ display: "flex", flexDirection: "column", marginBottom: "30px" }}>
+          <Box sx={{ marginTop: "40px" }}>
             <Typography variant='h2' color="primary" sx={{ fontWeight: "800" }}>{article.title}</Typography>
           </Box>
           <Box sx={{
-            marginTop: "20px", padding: "30px", textAlign: "left", overflowWrap: "break-word",
+            marginTop: "20px", textAlign: "left", overflowWrap: "break-word",
           }} >
             <Box sx={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
               <Typography color='primary' sx={{ fontWeight: "600" }}>{article?.createdBy?.firstName + " " + article?.createdBy?.lastName}</Typography>
